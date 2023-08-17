@@ -1,0 +1,62 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    <h1> Lista słów:</h1>
+
+    <div class="indent_up">
+        <form method="post">
+            {% csrf_token %}
+
+        <fieldset>
+            <legend>Wyszukaj</legend>
+            <input type="text" name="search" placeholder="wpisz część słowa">
+            <b> &nbsp;&nbsp;&nbsp;słowo:</b>
+
+            <input type="radio" id="search_eng" name="search_lang" value="eng" checked>
+            <label for="search_eng">Angielskie</label>
+
+            <input type="radio" id="search_pol" name="search_lang" value="pol" />
+            <label for="search_pol">Polskie</label>
+        </fieldset>
+
+            <input type="submit" value="wyszukaj">
+        </form>
+    </div>
+
+    <table class="word-list">
+    <tr>
+        <form method="post" class="word-list">
+        {% csrf_token %}
+        <th>Słowo <br>angielskie</th>
+        <th>Słowo <br>polskie</th>
+        <th>Kategoria</th>
+        <th>Przykładowe <br>zdanie</th>
+        <th>Stopień <br>zapamiętania    <input type="submit" name="arrow" value="&#8593;">
+                                        <input type="submit" name="arrow" value="&#8595;"></th>
+        <th>Następna <br>powtórka       <input type="submit" name="repeat" value="&#8593;">
+                                        <input type="submit" name="repeat" value="&#8595;"></th>
+        </form>
+        <th></th>
+        <th></th>
+    </tr>
+
+    {% for word_to_learn in words_to_learn %}
+    <tr>
+        <td>{{ word_to_learn.eng_word.word }}</td>
+        <td>{{ word_to_learn.pol_word.word }}</td>
+        <td>
+            {% for category in word_to_learn.category.all %}
+                {{ category.name }},
+            {% endfor %}
+        </td>
+        <td>{{ word_to_learn.word_context.text }}</td>
+        <td>{{ word_to_learn.memory_level }}</td>
+        <td>{{ word_to_learn.next_repeat }}</td>
+        <td><a href="{% url 'word_update' word_to_learn.id %}">edytuj</a></td>
+        <td><a href="{% url 'word_delete' word_to_learn.id %}">usuń</a></td>
+    </tr>
+    {% endfor %}
+    </table>
+    <div class="indent_up"></div>
+
+
+{% endblock %}

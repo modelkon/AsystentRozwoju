@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    <h1> Edycja słowa</h1>
+
+    <table class="word-list">
+    <tr>
+        <th>Słowo angielskie</th>
+        <th>Słowo polskie</th>
+        <th>Kategoria</th>
+        <th>Przykładowe zdanie</th>
+        <th>Stopień zapamiętania</th>
+        <th></th>
+    </tr>
+    <form method="post">
+        {% csrf_token %}
+    <tr>
+        <td><input type="text" name="eng_word" value="{{ word_to_learn.eng_word.word }}"></td>
+        <td><input type="text" name="pol_word" value="{{ word_to_learn.pol_word.word }}"></td>
+        <td>
+                <select name="categories" multiple>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}"
+                            {% if category in word_to_learn.category.all %}
+                                selected
+                            {% endif %}
+                        >
+                            {{ category.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+        </td>
+        <td><input type="text" name="text" value="{{ word_to_learn.word_context.text }}"></td>
+        <td><input type="number" name="memory_level" value="{{ word_to_learn.memory_level }}"></td>
+        <td><input type="submit" value="zapisz"></td>
+    </tr>
+    </form>
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    <h1> Lista kategorii</h1>
+
+        <div class="indent_up">
+        <form method="post">
+            {% csrf_token %}
+
+            <fieldset>
+                <legend>Wyszukaj</legend>
+                <input type="text" name="search" placeholder="wpisz część kategorii">
+            </fieldset>
+            <input type="submit" value="wyszukaj">
+        </form>
+    </div>
+
+    <table>
+        <th>Kategorie</th><th></th>
+        {% for category in categories %}
+
+        <tr>
+            <td> {{ category.name }}</td>
+            <td><a href="{% url 'category_delete' category.id %}"> usuń </a></td>
+        </tr>
+
+        {% endfor %}
+    </table>
+
+
+    <div class="indent">
+        <h3>Dodaj kategorię</h3>
+
+    <form method="post">
+    {% csrf_token %}
+        <p><input type="text" name="new_category" placeholder="nowa kategoria"></p>
+        <p><input type="submit" value="Dodaj kategorię"></p>
+    </form>
+    </div>
+
+{% endblock %}

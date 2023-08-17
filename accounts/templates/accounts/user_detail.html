@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+        <h1>Moje konto</h1>
+        <table class="detail">
+          <tr>
+            <th>Nazwa użytkownika:</th>
+            <td>{{ user.username }}</td>
+          </tr>
+          <tr>
+            <th>Imie:</th>
+            <td>{{ user.first_name }}</td>
+          </tr>
+          <tr>
+            <th>Nazwisko:</th>
+            <td>{{ user.last_name }}</td>
+          </tr>
+            <tr>
+            <th>Email:</th>
+            <td>{{ user.email }}</td>
+          </tr>
+            <tr>
+            <th class="change_passw" colspan="2">
+                <p>
+                    <a href="{% url 'user_update' %}">Zmień dane użytkownika</a>
+                </p>
+                <p>
+                    <a href="{% url 'change_password' %}">Zmiana hasła</a>
+                </p>
+                <p>
+                    <a href="{% url 'logout' %}">WYLOGUJ</a>
+                </p>
+            </th>
+          </tr>
+        </table>
+
+{% endblock %}

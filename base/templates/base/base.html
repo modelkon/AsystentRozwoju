@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+{% include 'base/style.html' %}
+<body>
+
+
+
+<div class="container">
+    <div class="user-header">
+        <table class="user-header">
+            {% if user.is_authenticated %}
+                <tr>
+                <td class="account-detail"><a href="{% url 'user_detail' %}">Zalogowano: <b>{{ user }}</b></a> </td>
+                <td class="account-detail"><a href="{% url 'logout' %}">Wyloguj</a> </td>
+                </tr>
+            {% else %}
+                <tr>
+                <td class="login"><a href="{% url 'log_in' %}">Zaloguj</a> </td>
+                <td class="register"><a href="{% url 'register' %}"> Zarejestruj</a></td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+
+
+    <ul class="nav">
+        <li id="highlighted" class="nav"><a  href="{% url 'learning_dashboard' %}"> Dzisiejsze <br>powtórki </a></li>
+        <li class="nav"><a href="{% url 'word_add' %}"> Dodaj słówko</a></li>
+        <li class="nav"><a href="{% url 'word_list' %}">Lista zapisanych słów</a></li>
+        <li class="nav"><a href="{% url 'category_list' %}">Lista kategorii</a></li>
+{#        <li class="nav"><a href=""> Zarządzaj </a></li>#}
+    </ul>
+
+        <h2>{{ base_msg }}</h2>
+
+    {% block content %}
+        <h1>Witaj w aplikacji, która pomoże Ci w nauce angielskiego.</h1>
+        <h1>Wybierz dział u góry.</h1>
+        <h1>Powodzenia!</h1>
+    {% endblock %}
+
+</div>
+</body>
+</html>

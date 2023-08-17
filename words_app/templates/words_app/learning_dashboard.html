@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+    <h1>Asystent nauki słówek</h1>
+
+    <div class="dashboard">
+
+        <div class="dashboard-app">
+
+            <b>Powtórki na dziś</b>
+            <ol>
+                {% for word in upcoming_words %}
+
+                    <li>
+                    {{ word.eng_word.word }} - {{ word.pol_word.word }}
+                    </li>
+
+                {% endfor %}
+            </ol>
+        </div>
+
+        <div class="dashboard-app">
+
+            <b>Słówka sprawiające trudność</b>
+            <ol>
+                {% for word in low_memory_level %}
+
+                    <li>
+                    {{ word.eng_word.word }} - {{ word.pol_word.word }}
+                    </li>
+
+                {% endfor %}
+            </ol>
+        </div>
+
+
+    </div>
+
+{% endblock %}

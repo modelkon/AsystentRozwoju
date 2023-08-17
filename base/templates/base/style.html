@@ -1,0 +1,147 @@
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        background-color: aliceblue;
+    }
+    div.container {
+        display: flex;
+        flex-direction: column;
+        background-color: lightslategray;
+        min-height: 600px;
+        padding: 5px;
+        box-shadow: 5px 3px 100px -7px rgba(52, 52, 52, 0.8);
+        min-width: 1200px;
+    }
+
+    div.user-header{
+        align-self: flex-end;
+        font-size: small;
+        background-color: peru;
+    }
+
+    table.user-header{
+        align-self: flex-end;
+        font-size: small;
+        background-color: peru;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    table.detail{
+        width: 50%;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+
+    table{
+        background-color: darkgrey;
+    }
+
+    th{
+        background-color: #868686;
+    }
+
+    table.word-list td{
+        text-align: center;
+    }
+
+    td.login,
+    td.register,
+    td.account-detail,
+    th.change_passw  {
+        padding-left: 5px;
+        padding-right: 5px;
+        text-align: center;
+    }
+
+    input.context_word{
+        min-width: 350px;
+    }
+
+    ul.nav {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+
+    }
+
+    li.nav {
+        display: flex;
+        float: left;
+        border-right: 1px solid #bbb;
+        align-items: center;
+
+    }
+
+    li:last-child {
+        border-right: none;
+
+    }
+
+    li.nav a {
+        display: flex;
+        align-items: center;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        min-height: 35px;
+    }
+
+    li.nav a:hover:not(.active) {
+        display: flex;
+        align-items: center;
+        background-color: #111;
+    }
+
+    .active {
+        display: flex;
+        align-items: center;
+        background-color: #04AA6D;
+    }
+
+    h1 {
+        padding-left: 25px;
+    }
+    .indent{
+        padding-left: 50px;
+    }
+    .indent_up{
+        padding-left: 50px;
+        padding-bottom: 20px;
+    }
+
+    fieldset{
+        margin: 3px;
+    }
+
+    div.dashboard{
+        display: flex;
+        justify-items: center;
+    }
+
+    div.dashboard-app{
+        text-align: center;
+        background-color: #91a8c4;
+        min-width: 300px;
+        min-height: 150px;
+        margin: 15px;
+        padding: 15px;
+        box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+        border-radius: 20px 20px 20px 20px;
+    }
+
+    li.nav#highlighted a{
+        font-weight: bold;
+        color: peru;
+    }
+</style>
